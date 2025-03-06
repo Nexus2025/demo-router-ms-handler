@@ -1,4 +1,4 @@
-package com.romanf.demo;
+package com.romanf.demo.handler;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

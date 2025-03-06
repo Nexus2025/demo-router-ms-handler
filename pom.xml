@@ -9,7 +9,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.romanf.demo</groupId>
+    <groupId>com.romanf.demo.router</groupId>
     <artifactId>demo-router-ms-handler</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>demo-router-ms-handler</name>

@@ -1,4 +1,4 @@
-package com.romanf.demo.service;
+package com.romanf.demo.handler.service;
 
 import com.example.grpc.Message;
 import com.example.grpc.MessageServiceGrpc;
