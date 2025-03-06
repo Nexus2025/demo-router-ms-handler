@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package com.example.grpc;
+
+service MessageService {
+  rpc SendMessage (MessageRequest) returns (MessageResponse);
+}
+
+message MessageRequest {
+  int64 operId = 1;
+  string message = 2;
+}
+
+// Ответ от сервера
+message MessageResponse {
+  int64 operId = 1;
+  string status = 2;
+}
