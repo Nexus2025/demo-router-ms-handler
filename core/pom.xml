@@ -5,10 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core</artifactId>
     <packaging>jar</packaging>
+
     <dependencies>
         <dependency>
             <groupId>com.romanf.demo.router</groupId>
             <artifactId>grpc-handler</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.romanf.demo.router</groupId>
+            <artifactId>kafka-handler</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
