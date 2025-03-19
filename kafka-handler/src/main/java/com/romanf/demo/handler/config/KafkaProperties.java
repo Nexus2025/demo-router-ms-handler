@@ -12,4 +12,5 @@ public class KafkaProperties {
     private String bootstrapServers;
     private String incomingTopics;
     private String groupId;
+    private Boolean autoCommit;
 }

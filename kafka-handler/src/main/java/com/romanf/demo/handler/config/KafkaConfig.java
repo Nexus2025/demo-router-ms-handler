@@ -11,6 +11,7 @@ import org.springframework.kafka.config.KafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
+import org.springframework.kafka.listener.ContainerProperties;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +31,7 @@ public class KafkaConfig {
         Map<String, Object> kafkaConfig = new HashMap<>();
         kafkaConfig.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, handlerKafkaProperties.getBootstrapServers());
         kafkaConfig.put(ConsumerConfig.GROUP_ID_CONFIG, handlerKafkaProperties.getGroupId());
+        kafkaConfig.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, handlerKafkaProperties.getAutoCommit()); //вкл-выкл auto commit
         kafkaConfig.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringSerializer.class);
         kafkaConfig.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringSerializer.class);
 
@@ -46,6 +48,10 @@ public class KafkaConfig {
         containerFactory.getContainerProperties().setLogContainerConfig(false);
         containerFactory.setAutoStartup(true);
         containerFactory.setConsumerFactory(handlerConsumerFactory);
+
+        if (handlerConsumerFactory.getConfigurationProperties().get("enable.auto.commit").equals(false)) {
+            containerFactory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL_IMMEDIATE); //ручной коммит
+        }
 
         return containerFactory;
     }
